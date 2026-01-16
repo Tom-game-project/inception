@@ -21,6 +21,9 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
     && chmod +x wp-cli.phar \
     && mv wp-cli.phar /usr/local/bin/wp
 
+# PHPのメモリ制限を128MBから512MBに増やす設定ファイルを作成
+RUN echo "memory_limit = 512M" > /etc/php83/conf.d/memory_limit.ini
+
 # PHP-FPMの設定（リッスンポートを9000に変更）
 RUN sed -i "s|listen = 127.0.0.1:9000|listen = 9000|g" /etc/php83/php-fpm.d/www.conf && \
     sed -i "s|;listen.owner = nobody|listen.owner = nobody|g" /etc/php83/php-fpm.d/www.conf && \
