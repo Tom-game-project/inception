@@ -39,6 +39,10 @@ if [ ! -f wp-config.php ]; then
         --role=author \
         --user_pass="${USER1_PASSWORD}" \
         --allow-root
+
+    # コメントの手動承認を無効化（誰でも即座にコメントが表示されるようにする）
+    wp option update comment_moderation 0 --allow-root
+    wp option update comment_previously_approved 0 --allow-root
 fi
 
 exec "$@"

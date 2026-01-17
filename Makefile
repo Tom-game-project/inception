@@ -35,8 +35,8 @@ clean:
 	sudo docker-compose -f $(DOCKER_COMPOSE) down --rmi all -v
 
 fclean: clean
-	sudo rm -rf $(DATA_PATH)/mariadb/*
-	sudo rm -rf $(DATA_PATH)/wordpress/*
+	sudo rm -rf $(DATA_PATH)/mariadb/
+	sudo rm -rf $(DATA_PATH)/wordpress/
 
 re: fclean all
 
