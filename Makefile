@@ -1,5 +1,5 @@
 
-.PHONY: all ps wp-logs db-logs down stop start clean fclean re
+.PHONY: all ps wp-logs db-logs show-db down stop start clean fclean re
 
 NAME = inception
 DOCKER_COMPOSE =./srcs/docker-compose.yaml
@@ -8,31 +8,34 @@ DATA_PATH =./data
 all:
 	@sudo mkdir -p $(DATA_PATH)/mariadb
 	@sudo mkdir -p $(DATA_PATH)/wordpress
-	sudo docker-compose -f $(DOCKER_COMPOSE) up -d --build
+	sudo docker compose -f $(DOCKER_COMPOSE) up -d --build
 
 ps: 
-	sudo docker-compose -f $(DOCKER_COMPOSE) ps
+	sudo docker compose -f $(DOCKER_COMPOSE) ps
 
 wp-logs:
-	sudo docker-compose -f $(DOCKER_COMPOSE) logs wordpress
+	sudo docker compose -f $(DOCKER_COMPOSE) logs wordpress
 
 db-logs:
-	sudo docker-compose -f $(DOCKER_COMPOSE) logs mariadb
+	sudo docker compose -f $(DOCKER_COMPOSE) logs mariadb
 
 nx-logs:
-	sudo docker-compose -f $(DOCKER_COMPOSE) logs nginx
+	sudo docker compose -f $(DOCKER_COMPOSE) logs nginx
 
 down:
-	sudo docker-compose -f $(DOCKER_COMPOSE) down
+	sudo docker compose -f $(DOCKER_COMPOSE) down
 
 stop:
-	sudo docker-compose -f $(DOCKER_COMPOSE) stop
+	sudo docker compose -f $(DOCKER_COMPOSE) stop
 
 start:
-	sudo docker-compose -f $(DOCKER_COMPOSE) start
+	sudo docker compose -f $(DOCKER_COMPOSE) start
 
 clean:
-	sudo docker-compose -f $(DOCKER_COMPOSE) down --rmi all -v
+	sudo docker compose -f $(DOCKER_COMPOSE) down --rmi all -v
+
+show-db:
+	sudo docker compose -f $(DOCKER_COMPOSE) exec mariadb mysql -u root -p
 
 fclean: clean
 	sudo rm -rf $(DATA_PATH)/mariadb/
