@@ -24,10 +24,10 @@ The infrastructure consists of:
 ### Setup & Execution
 
 1. **Configure Hostname**:
-Add the following line to your `/etc/hosts` file to map the domain to your local machine:bash
-127.0.0.1   tmuranak.42.fr
-```
+Add the following line to your `/etc/hosts` file to map the domain to your local machine
 
+```bash
+127.0.0.1   tmuranak.42.fr
 
 ```
 
@@ -85,7 +85,9 @@ make fclean
 ## Resources
 
 -(https://docs.docker.com/)
+
 -(https://wiki.alpinelinux.org/)
+
 -(https://nginx.org/en/docs/)
 
 * *AI Usage*: AI tools were used to generate boilerplate code for configuration files and to debug complex Docker network issues. All generated code was reviewed and tested manually.
