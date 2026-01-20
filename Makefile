@@ -37,6 +37,12 @@ clean:
 show-db:
 	sudo docker compose -f $(DOCKER_COMPOSE) exec mariadb mysql -u root -p
 
+vol: 
+	@echo "==================== mariadb data ===================="
+	sudo docker volume inspect srcs_mariadb_data
+	@echo "==================== wordpress data ===================="
+	sudo docker volume inspect srcs_wordpress_data
+
 fclean: clean
 	sudo rm -rf $(DATA_PATH)/mariadb/
 	sudo rm -rf $(DATA_PATH)/wordpress/
