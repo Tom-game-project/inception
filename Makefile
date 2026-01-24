@@ -1,5 +1,5 @@
 
-.PHONY: all ps wp-logs db-logs show-db down stop start clean fclean re
+.PHONY: all ps vol wp-logs db-logs show-db down stop start clean fclean re
 
 NAME = inception
 DOCKER_COMPOSE =./srcs/docker-compose.yaml
